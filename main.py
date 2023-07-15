@@ -4,7 +4,7 @@ from fastapi import FastAPI
 app = FastAPI()
 @app.get("/")
 def home():
-    return {"home"}
+    return {"message": "home"}
 
 @app.get("/audio_stream")
 def get_audio_stream_url(url: str):
