@@ -16,7 +16,6 @@ def extract_audio(url: str):
             'preferredcodec': 'mp3',
             'preferredquality': '192',
         }],
-        'proxy': 'socks4://186.251.255.73:31337'
     }
 
     with youtube_dl.YoutubeDL(ydl_opts) as ydl:
