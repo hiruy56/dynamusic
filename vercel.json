@@ -1,9 +1,12 @@
-
 {
   "builds": [
-    { "src": "main.py", "use": "@now/python" }
+    {
+      "src": "main.py",
+      "use": "@vercel/python"
+    }
   ],
   "routes": [
+    { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/main.py" }
   ]
 }
