@@ -1,3 +1,4 @@
+import time
 import youtube_dl
 from fastapi import FastAPI
 
@@ -9,6 +10,8 @@ def root():
 
 @app.get("/extract-audio")
 def extract_audio(url: str):
+    start_time = time.time()  # Start the timer
+
     ydl_opts = {
         'format': 'bestaudio/best',
         'postprocessors': [{
@@ -26,7 +29,10 @@ def extract_audio(url: str):
                 audio_url = fmt.get('url')
                 break
 
-    return {"audio_url": audio_url}
+    end_time = time.time()  # End the timer
+    response_time = end_time - start_time  # Calculate response time
+
+    return {"audio_url": audio_url, "response_time": response_time}
 
 if __name__ == "__main__":
     import uvicorn
