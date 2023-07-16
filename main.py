@@ -9,7 +9,7 @@ def root():
     return {"message": "Welcome to DynamusicAPI!"}
 
 @app.get("/extract-audio")
-def extract_audio(url: str):
+async def extract_audio(url: str):
     start_time = time.time()  # Start the timer
 
     ydl_opts = {
