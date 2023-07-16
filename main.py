@@ -35,4 +35,3 @@ def extract_audio(url: str):
     return {"audio_url": audio_url, "response_time": response_time}
 
 
-
