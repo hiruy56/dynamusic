@@ -33,6 +33,7 @@ def extract_audio(url: str):
     response_time = end_time - start_time  # Calculate response time
 
     return {"audio_url": audio_url, "response_time": response_time}
+    pass
 
 
 if __name__ == "__main__":
