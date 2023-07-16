@@ -35,6 +35,3 @@ def extract_audio(url: str):
     return {"audio_url": audio_url, "response_time": response_time}
 
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="localhost", port=8000)
