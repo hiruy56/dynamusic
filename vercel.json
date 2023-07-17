@@ -1,12 +1,13 @@
 {
-  "builds": [
-    {
-      "src": "main.py",
-      "use": "@vercel/python"
+  "functions": {
+    "api": {
+      "runtime": "@vercel/python"
     }
-  ],
+  },
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/main.py" }
+    { "src": "/extract-audio", "dest": "/api" },
+    { "src": "/search/:query", "dest": "/api" },
+    { "src": "/(.*)", "dest": "/api" }
   ]
 }
