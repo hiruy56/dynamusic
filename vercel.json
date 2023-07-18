@@ -1,19 +1,12 @@
 {
-  "functions": {
-    "main.py": {
-      "runtime": "python3.9"
+  "builds": [
+    {
+      "src": "main.py",
+      "use": "@vercel/python"
     }
-  },
+  ],
   "routes": [
     { "handle": "filesystem" },
-    {
-      "src": "/extract-audio",
-      "dest": "/api/extract-audio"
-    },
-    {
-      "src": "/search/:query",
-      "dest": "/api/search/:query"
-    },
     { "src": "/(.*)", "dest": "/main.py" }
   ]
 }
