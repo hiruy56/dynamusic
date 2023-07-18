@@ -1,13 +1,19 @@
 {
   "functions": {
-    "main": {
+    "main.py": {
       "runtime": "python3.9"
     }
   },
   "routes": [
     { "handle": "filesystem" },
-    { "src": "/extract-audio", "dest": "main" },
-    { "src": "/search/:query", "dest": "main" },
-    { "src": "/(.*)", "dest": "main" }
+    {
+      "src": "/extract-audio",
+      "dest": "/api/extract-audio"
+    },
+    {
+      "src": "/search/:query",
+      "dest": "/api/search/:query"
+    },
+    { "src": "/(.*)", "dest": "/main.py" }
   ]
 }
