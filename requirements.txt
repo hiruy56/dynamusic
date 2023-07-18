@@ -2,3 +2,4 @@ fastapi
 youtube_dl
 uvicorn
 requests
+aiohttp
