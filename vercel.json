@@ -1,12 +1,7 @@
 {
   "functions": {
     "main.py": {
-      "runtime": "python:3.9"
-    }
-  },
-  "serverless": {
-    "runtimes": {
-      "python": "now-python@0.27.0"
+      "runtime": "python3.9"
     }
   },
   "routes": [
