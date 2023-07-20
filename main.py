@@ -11,7 +11,7 @@ def root():
 
 @app.get("/search-youtube")
 def search_youtube(query: str):
-    ytmusic = YTMusic()
+    ytmusic = YTMusic(location="US")
     search_results = ytmusic.search(query=query, filter="songs")
     return search_results
 
