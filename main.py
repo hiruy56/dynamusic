@@ -1,7 +1,6 @@
 import time
 import youtube_dl
 from fastapi import FastAPI, HTTPException
-from ytmusicapi import YTMusic
 
 app = FastAPI()
 
@@ -9,11 +8,32 @@ app = FastAPI()
 def root():
     return {"message": "Welcome to DynamusicAPI!"}
 
-@app.get("/search-youtube")
-def search_youtube(query: str):
-    ytmusic = YTMusic(location="US")
-    search_results = ytmusic.search(query=query, filter="songs")
-    return search_results
+@app.get("/search-youtube-music")
+def search_youtube_music(query: str):
+    url = "https://music.youtube.com/youtubei/v1/search?key=AIzaSyC9XL3ZjWddXya6X74dJoCTL"
+
+    headers = {
+        "User-Agent": "uwu",
+        "Content-Type": "application/json",
+    }
+
+    data = {
+        "context": {
+            "client": {
+                "clientName": "WEB_REMIX",
+                "clientVersion": "1.20230508.01.01",
+                "osName": "Linux"
+            }
+        },
+        "query": query
+    }
+
+    response = requests.post(url, headers=headers, json=data)
+
+    if response.status_code == 200:
+        return response.json()
+    else:
+        raise HTTPException(status_code=response.status_code, detail=response.text)
 
 @app.get("/extract-audio")
 def extract_audio(url: str):
