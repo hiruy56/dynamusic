@@ -1,6 +1,7 @@
 import time
-import youtube_dl
+import yt_dlp as youtube_dl
 from fastapi import FastAPI, HTTPException
+import requests
 
 app = FastAPI()
 
@@ -48,14 +49,17 @@ def extract_audio(url: str):
         }],
     }
 
-    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-        info_dict = ydl.extract_info(url, download=False)
-        formats = info_dict.get('formats', [])
-        audio_url = None
-        for fmt in formats:
-            if fmt.get('acodec') == 'mp4a.40.2':
-                audio_url = fmt.get('url')
-                break
+    try:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            info_dict = ydl.extract_info(url, download=False)
+            formats = info_dict.get('formats', [])
+            audio_url = None
+            for fmt in formats:
+                if fmt.get('acodec') == 'mp4a.40.2':
+                    audio_url = fmt.get('url')
+                    break
+    except youtube_dl.utils.DownloadError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
     end_time = time.time()  # End the timer
     response_time = end_time - start_time  # Calculate response time
