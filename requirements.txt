@@ -1,5 +1,5 @@
 fastapi
-youtube_dl
+youtube_dlp
 uvicorn
 requests
 ytmusicapi
