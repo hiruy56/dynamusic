@@ -1,6 +1,6 @@
 # DynamusicAPI Documentation
 
-DynamusicAPI is a simple and efficient API to search music on YouTube Music and extract audio from YouTube videos. The API is built using FastAPI and leverages `youtube_dl` for extracting audio. This documentation provides details on how to use the API endpoints.
+DynamusicAPI is a simple and efficient API to search music on YouTube Music and extract audio from YouTube videos. The API is built using FastAPI and leverages `youtube_dl` for extracting audio. This documentation provides details on how to use the API endpoints btw if your in a country unsuported by youtube music the output will be bad so host it on a supported country.
 
 ## Table of Contents
 - [Installation](#installation)
